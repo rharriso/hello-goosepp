@@ -296,6 +296,12 @@ ENABLE_UNIX_SOCKETS:BOOL=ON
 //Set to ON to generate coverage reports.
 GENERATE_COVERAGE:BOOL=OFF
 
+//Path to a library.
+GOOSE:FILEPATH=/usr/local/lib/libgoosepp.so
+
+//Path to a library.
+GUMBO:FILEPATH=/usr/local/lib/libgumbo.so
+
 //disables all protocols except HTTP (This overrides all CURL_DISABLE_*
 // options)
 HTTP_ONLY:BOOL=OFF

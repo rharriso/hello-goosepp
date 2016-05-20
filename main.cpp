@@ -7,14 +7,19 @@
 using namespace std;
 using scivey::goosepp::GooseExtractor;
 
-int main(){
-  string url = "http://https://chrome.googleblog.com/2016/05/the-google-play-store-coming-to.html";
+int main(int argc, char** argv){
+  string url = argv[1];
+  cout << url << endl;
 
   auto r = cpr::Get(cpr::Url{url},
-      cpr::Authentication{"user", "pass"},
-      cpr::Parameters{{"anon", "true"}, {"key", "value"}});
-  r.header["content-type"]; 
-
+                    cpr::Authentication{"user", "pass"},
+                    cpr::Parameters{{"anon", "true"}, {"key", "value"}});
 
   cout << r.status_code << endl;
+  cout << r.text << endl;
+  cout << r.error.message << endl;
+
+  GooseExtractor extractor{url, r.text};
+  cout << extractor.getTitle() << endl;
+  cout << extractor.getPublishDate() << endl;
 }
